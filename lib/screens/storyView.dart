@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ipekyoluasya/constants.dart';
+import 'package:ipekyoluasya/iconbar.dart';
 import 'package:ipekyoluasya/utils/story.dart';
 
 class StoryData extends StatelessWidget {
@@ -130,50 +131,7 @@ class StoryData extends StatelessWidget {
                     color: Colors.black),
                 width: 300,
                 height: 60,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 15),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      GestureDetector(
-                        onTap: () {}, // handle your image tap here
-                        child: Image.asset(
-                          'assets/images/icon1.png',
-                          fit: BoxFit.cover, // this is the solution for border
-                          width: 16.0,
-                          height: 15.0,
-                        ),
-                      ),
-                      GestureDetector(
-                        onTap: () {}, // handle your image tap here
-                        child: Image.asset(
-                          'assets/images/icon2.png',
-                          fit: BoxFit.cover, // this is the solution for border
-                          width: 16.0,
-                          height: 15.0,
-                        ),
-                      ),
-                      GestureDetector(
-                        onTap: () {}, // handle your image tap here
-                        child: Image.asset(
-                          'assets/images/icon3.png',
-                          fit: BoxFit.cover, // this is the solution for border
-                          width: 16.0,
-                          height: 15.0,
-                        ),
-                      ),
-                      GestureDetector(
-                        onTap: () {}, // handle your image tap here
-                        child: Image.asset(
-                          'assets/images/icon4.png',
-                          fit: BoxFit.cover, // this is the solution for border
-                          width: 16.0,
-                          height: 15.0,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+                child: iconBar(),
               ),
             ],
           ),
