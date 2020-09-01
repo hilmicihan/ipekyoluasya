@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:ipekyoluasya/screens/storyView.dart';
 
 class homePage extends StatelessWidget {
@@ -6,11 +7,19 @@ class homePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return HomeScreen();
+  }
+}
+
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: Color(0xFF6FA12E),
-      ),
       body: Column(
         children: [
           StoryData(),

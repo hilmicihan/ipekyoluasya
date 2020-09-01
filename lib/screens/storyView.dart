@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:ipekyoluasya/constants.dart';
-import 'package:ipekyoluasya/iconbar.dart';
 import 'package:ipekyoluasya/utils/story.dart';
 
 class StoryData extends StatelessWidget {
@@ -30,6 +29,8 @@ class StoryData extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
     return Container(
       child: SingleChildScrollView(
         child: SingleChildScrollView(
@@ -110,6 +111,7 @@ class StoryData extends StatelessWidget {
                   ).toList(),
                 ),
               ),
+              //post Images Part
               Container(
                 margin: EdgeInsets.symmetric(
                   horizontal: 10,
@@ -118,21 +120,13 @@ class StoryData extends StatelessWidget {
                   borderRadius: BorderRadius.circular(20),
                   child: Image(
                     image: AssetImage("assets/images/sofra.png"),
-                    width: 360,
-                    height: 445,
+                    width: width * 0.8,
+                    height: height * 0.5,
                     fit: BoxFit.cover,
                   ),
                 ),
               ),
               SizedBox(height: 40),
-              Container(
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(30),
-                    color: Colors.black),
-                width: 300,
-                height: 60,
-                child: iconBar(),
-              ),
             ],
           ),
         ),
