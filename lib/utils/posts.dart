@@ -1,9 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:percent_indicator/linear_percent_indicator.dart';
 
-class Post extends StatelessWidget {
+class Post extends StatefulWidget {
   String path;
-  Post({this.path});
+  Text description;
+  Post({this.path, this.description});
+
+  @override
+  _PostState createState() => _PostState();
+}
+
+class _PostState extends State<Post> {
+  double likePercent = 0.1;
 
   @override
   Widget build(BuildContext context) {
@@ -13,14 +22,62 @@ class Post extends StatelessWidget {
       margin: EdgeInsets.symmetric(
         horizontal: 10,
       ),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(20),
-        child: Image(
-          image: AssetImage(path),
-          width: width * 0.8,
-          height: height * 0.55,
-          fit: BoxFit.cover,
+      child: Container(
+        width: width * 0.8,
+        height: height * 0.52,
+        alignment: Alignment.bottomCenter,
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage(widget.path),
+            fit: BoxFit.cover,
+          ),
+          borderRadius: BorderRadius.circular(20),
         ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            Padding(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 20.0, vertical: 5),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  widget.description,
+                  InkWell(
+                    onTap: () {
+                      setState(() {
+                        if (likePercent < 0.9) {
+                          likePercent += 0.1;
+                        } else {
+                          likePercent = 0;
+                        }
+                      });
+                    },
+                    child: Container(
+                      child: ClipRRect(
+                        child: Image.asset(
+                          'assets/images/icon_like.png',
+                        ),
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.all(7.0),
+              child: LinearPercentIndicator(
+                width: width * 0.76,
+                animation: false,
+                lineHeight: 10.0,
+                animationDuration: 1,
+                percent: likePercent,
+                linearStrokeCap: LinearStrokeCap.roundAll,
+                progressColor: Color(0xFFFFCD00),
+              ),
+            ),
+          ],
+        ), /* add child content here */
       ),
     );
   }

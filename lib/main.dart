@@ -31,7 +31,7 @@ class _MyAppState extends State<MyApp> {
         backgroundColor: Colors.white,
         body: Screens[index],
         bottomNavigationBar: Padding(
-          padding: const EdgeInsets.all(30),
+          padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 10),
           child: Container(
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(30), color: Colors.black),

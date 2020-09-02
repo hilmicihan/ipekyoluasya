@@ -1,12 +1,47 @@
 import 'package:flutter/material.dart';
 import 'package:ipekyoluasya/utils/posts.dart';
 import 'package:ipekyoluasya/utils/searchBar.dart';
+import 'package:percent_indicator/linear_percent_indicator.dart';
 
 import '../constants.dart';
 
 class ProjectScreen extends StatelessWidget {
-  const ProjectScreen({Key key}) : super(key: key);
+  ProjectScreen({Key key}) : super(key: key);
 
+  List<Text> _postText = [
+    Text(
+      "Bekleyenimiz Var",
+      style: TextStyle(
+        fontWeight: FontWeight.bold,
+        color: Colors.white,
+        fontSize: 20,
+      ),
+    ),
+    Text(
+      "Yolumuzu Gözleyenler",
+      style: TextStyle(
+        fontWeight: FontWeight.bold,
+        color: Colors.white,
+        fontSize: 20,
+      ),
+    ),
+    Text(
+      "Yetim Evi",
+      style: TextStyle(
+        fontWeight: FontWeight.bold,
+        color: Colors.white,
+        fontSize: 20,
+      ),
+    ),
+    Text(
+      "Haydi Kızlar Okula!",
+      style: TextStyle(
+        fontWeight: FontWeight.bold,
+        color: Colors.white,
+        fontSize: 20,
+      ),
+    ),
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,13 +54,25 @@ class ProjectScreen extends StatelessWidget {
               height: 30,
             ),
             MenuView(),
-            Post(path: "assets/images/posts/post1.png"),
+            Post(
+              path: "assets/images/posts/post1.png",
+              description: _postText[0],
+            ),
             PostBar(),
-            Post(path: "assets/images/posts/post2.png"),
+            Post(
+              path: "assets/images/posts/post2.png",
+              description: _postText[1],
+            ),
             PostBar(),
-            Post(path: "assets/images/posts/post3.png"),
+            Post(
+              path: "assets/images/posts/post3.png",
+              description: _postText[2],
+            ),
             PostBar(),
-            Post(path: "assets/images/posts/post4.png"),
+            Post(
+              path: "assets/images/posts/post4.png",
+              description: _postText[3],
+            ),
             PostBar(),
           ],
         ),

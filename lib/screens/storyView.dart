@@ -1,8 +1,28 @@
+import 'dart:ffi';
+import 'dart:wasm';
+
 import 'package:flutter/material.dart';
+
 import 'package:ipekyoluasya/constants.dart';
 import 'package:ipekyoluasya/utils/story.dart';
+import 'package:percent_indicator/percent_indicator.dart';
 
-class StoryData extends StatelessWidget {
+class StoryData extends StatefulWidget {
+  @override
+  _StoryDataState createState() => _StoryDataState();
+}
+
+class _StoryDataState extends State<StoryData> {
+  List<Text> _postText = [
+    Text(
+      "Yetim Sofrası",
+      style: TextStyle(
+        fontWeight: FontWeight.bold,
+        color: Colors.white,
+        fontSize: 20,
+      ),
+    ),
+  ];
   List<Story> _storyImages = [
     Story(path: "assets/images/image1.png", name: "child1"),
     Story(path: "assets/images/image2.png", name: "child2"),
@@ -26,11 +46,12 @@ class StoryData extends StatelessWidget {
     Text("Eğitim",
         style: TextStyle(fontWeight: FontWeight.bold, fontSize: menuFontSize)),
   ];
-
+  double likePercent = 0.1;
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
+
     return Container(
       child: SingleChildScrollView(
         child: SingleChildScrollView(
@@ -113,23 +134,69 @@ class StoryData extends StatelessWidget {
               ),
               //post Images Part
               Container(
-                margin: EdgeInsets.symmetric(
-                  horizontal: 10,
-                ),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(20),
-                  child: Image(
+                width: width * 0.8,
+                height: height * 0.52,
+                alignment: Alignment.bottomCenter,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
                     image: AssetImage("assets/images/sofra.png"),
-                    width: width * 0.8,
-                    height: height * 0.46,
                     fit: BoxFit.cover,
                   ),
+                  borderRadius: BorderRadius.circular(20),
                 ),
+                child: postLikeBar(width), /* add child content here */
               ),
             ],
           ),
         ),
       ),
+    );
+  }
+
+  Column postLikeBar(double width) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 5),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              _postText[0],
+              InkWell(
+                onTap: () {
+                  setState(() {
+                    if (likePercent < 0.9) {
+                      likePercent += 0.1;
+                    } else {
+                      likePercent = 0;
+                    }
+                  });
+                },
+                child: Container(
+                  child: ClipRRect(
+                    child: Image.asset(
+                      'assets/images/icon_like.png',
+                    ),
+                  ),
+                ),
+              )
+            ],
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.all(7.0),
+          child: LinearPercentIndicator(
+            width: width * 0.76,
+            animation: false,
+            lineHeight: 10.0,
+            animationDuration: 1,
+            percent: likePercent,
+            linearStrokeCap: LinearStrokeCap.roundAll,
+            progressColor: Color(0xFFFFCD00),
+          ),
+        ),
+      ],
     );
   }
 }
