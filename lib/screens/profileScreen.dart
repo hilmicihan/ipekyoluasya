@@ -90,8 +90,16 @@ class ProfileChart extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(totalDay),
-              Text(totalDay2),
+              Text(
+                totalDay,
+                style:
+                    TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
+              ),
+              Text(
+                totalDay2,
+                style:
+                    TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
+              ),
             ],
           ),
         ),
@@ -105,8 +113,16 @@ class ProfileChart extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(totalProje),
-              Text(totalProje2),
+              Text(
+                totalProje,
+                style:
+                    TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
+              ),
+              Text(
+                totalProje2,
+                style:
+                    TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
+              ),
             ],
           ),
         )

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:ipekyoluasya/screens/storyView.dart';
+import 'package:ipekyoluasya/utils/searchBar.dart';
 
 class homePage extends StatelessWidget {
   const homePage({Key key}) : super(key: key);
@@ -22,6 +23,7 @@ class HomeScreen extends StatelessWidget {
       backgroundColor: Colors.white,
       body: Column(
         children: [
+          MySearchBar(),
           StoryData(),
         ],
       ),

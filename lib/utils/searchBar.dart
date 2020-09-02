@@ -5,6 +5,7 @@ class MySearchBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
+        Image.asset("assets/images/icon_profile.png"),
         Expanded(
           child: Container(
             padding: EdgeInsets.only(left: 16),

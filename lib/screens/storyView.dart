@@ -121,12 +121,11 @@ class StoryData extends StatelessWidget {
                   child: Image(
                     image: AssetImage("assets/images/sofra.png"),
                     width: width * 0.8,
-                    height: height * 0.5,
+                    height: height * 0.46,
                     fit: BoxFit.cover,
                   ),
                 ),
               ),
-              SizedBox(height: 40),
             ],
           ),
         ),
